@@ -1,0 +1,52 @@
+<!-- static/resume_template.html
+     Populated via str.format-style {{placeholders}} by
+     components/resume_preview.py. Same HTML powers both the live
+     st.components.v1.html preview and the xhtml2pdf PDF export, so
+     CSS here is deliberately kept to what xhtml2pdf's reportlab-based
+     renderer supports: no flexbox/grid, no CSS custom properties,
+     table-based layout for side-by-side content. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  body {
+    font-family: 'Helvetica', 'Times-Roman', serif;
+    color: #1a1a1a;
+    padding: 32px;
+    line-height: 1.5;
+  }
+  h1 { font-size: 24px; margin-bottom: 2px; }
+  .contact { color: #555555; font-size: 11px; margin-bottom: 18px; }
+  h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #333333;
+    padding-bottom: 3px;
+    margin-top: 18px;
+  }
+  .entry { margin-top: 8px; }
+  /* xhtml2pdf has no flexbox support, so the "title ... dates" row
+     uses a two-cell table instead of display:flex. */
+  .entry-header-table { width: 100%; border-collapse: collapse; }
+  .entry-header-table td { padding: 0; }
+  .entry-title { font-weight: bold; text-align: left; }
+  .entry-dates { text-align: right; white-space: nowrap; }
+  .entry-sub { font-style: italic; color: #444444; font-size: 11px; }
+  ul { margin: 4px 0 0 16px; padding: 0; }
+  li { margin-bottom: 2px; font-size: 12px; }
+  .skills { font-size: 12px; }
+  p { font-size: 12px; }
+</style>
+</head>
+<body>
+  <h1>{{name}}</h1>
+  <div class="contact">{{contact_line}}</div>
+
+  {{summary_section}}
+  {{experience_section}}
+  {{education_section}}
+  {{skills_section}}
+  {{projects_section}}
+</body>
+</html>
